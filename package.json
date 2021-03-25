@@ -1,0 +1,41 @@
+{
+  "name": "form-schema-kit",
+  "version": "1.0.0",
+  "description": "Simple JSON form schema for generating live fields with validations, dependencies, pages.",
+  "main": "index.js",
+  "files": [],
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yurks/form-schema-kit.git"
+  },
+  "keywords": [
+    "form",
+    "schema",
+    "json",
+    "generator",
+    "node",
+    "browser",
+    "js",
+    "vue",
+    "react",
+    "html",
+    "plain",
+    "template"
+  ],
+  "author": "Yurk Sha (http://yurks.github.io)",
+  "bugs": {
+    "url": "https://github.com/yurks/form-schema-kit/issues"
+  },
+  "homepage": "https://github.com/yurks/form-schema-kit#readme",
+  "dependencies": {
+    "wsk-utils": "^1.1.4"
+  },
+  "devDependencies": {
+    "eslint": "^7.22.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1"
+  }
+}

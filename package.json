@@ -1,9 +1,11 @@
 {
   "name": "form-schema-kit",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Simple JSON form schema for generating live fields with validations, dependencies, pages.",
   "main": "index.js",
-  "files": [],
+  "files": [
+    "src"
+  ],
   "scripts": {},
   "repository": {
     "type": "git",

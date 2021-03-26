@@ -1,5 +1,5 @@
 'use strict'
-var fieldGetValues = require('./get-value')
+var fieldGetValue = require('./get-value')
 var fieldValidator = require('./validator')
 var isBoolean = require('wsk-utils/var/is/boolean')
 var isUndefined = require('wsk-utils/var/is/undefined')
@@ -8,8 +8,8 @@ var isString = require('wsk-utils/var/is/string')
 module.exports = function (field, validator) {
   var values
   if (isUndefined(validator)) {
-    values = fieldGetValues.call(this, field)
-    validator = fieldValidator.call(this, field, values, fieldGetValues.call(this, field, 'label'))
+    values = fieldGetValue.call(this, field)
+    validator = fieldValidator.call(this, field, values, fieldGetValue.call(this, field, 'label'))
   } else {
     validator = {
       validated: isBoolean(validator) ? validator !== false : false,

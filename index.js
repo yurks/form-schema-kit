@@ -1,10 +1,10 @@
 'use strict'
-var defaults = require('./defaults')
-var initialize = require('./initialize')
-var initializeFields = require('./field')
+var defaults = require('./src/defaults')
+var initialize = require('./src/initialize')
+var initializeFields = require('./src/field')
 
-var formValidate = require('./form/validate')
-var formData = require('./form/get-data')
+var formValidate = require('./src/form/validate')
+var formData = require('./src/form/get-data')
 
 function Fsk (fields) {
   var $instance = defaults({})

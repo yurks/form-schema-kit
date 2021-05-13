@@ -24,9 +24,8 @@ var _getArray = function (o, prop) {
 
 module.exports = function ($instance, formRaw, rootFields, rootPages, rootDependency, fieldTypes) {
   fieldTypes = fieldTypes || $instance.fieldtypes
-  var call = $instance.call || noop
-  var setting = call('settings.get') || noop
-  var settingSetDefault = call('settings.setDefault')
+  var setting = ($instance.settings && $instance.settings.get) || noop
+  var settingSetDefault = ($instance.settings && $instance.settings.setDefault) || noop
 
   var questions = isArray(formRaw) ? formRaw.slice() : (_getArray(formRaw.form, 'questions') || [])
   if (!questions.length) {

@@ -6,7 +6,7 @@ var initializeFields = require('./src/field')
 var formValidate = require('./src/form/validate')
 var formData = require('./src/form/get-data')
 
-function Fsk (fields) {
+function Fsk (fields, settings) {
   var $instance = defaults({})
   var rootFields = $instance.fields = {}
   var rootPages = $instance.pages = []
@@ -16,6 +16,10 @@ function Fsk (fields) {
 
   $instance.validate = formValidate.bind($instance)
   $instance.getData = formData.bind($instance)
+
+  if (settings) {
+    $instance.settings.set(settings)
+  }
 
   if (fields) {
     initialize($instance, fields, rootFields, rootPages, rootDependency)

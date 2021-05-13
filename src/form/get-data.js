@@ -30,6 +30,9 @@ module.exports = function (type, page_id, mode) {
   formTraverse.call(this, function (i, field) {
     if (!field.local) {
       var values = fieldGetValue.call(_this, field, mode)
+      if (values.length === 0 && _this.fieldtypes.checkbox !== field.field_type) {
+        values = ['']
+      }
       each(values, parser, field.name, out)
     }
   }, page_id == null ? -Infinity : -page_id)

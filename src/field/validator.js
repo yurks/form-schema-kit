@@ -70,10 +70,10 @@ var formFieldValidator = function (field, value, valueLabel) {
   var validated = true
   var validation_error = ''
   var validation_type = ''
-  var skip = false
+  var skip = field.validation === false
   var val = ''
 
-  if (fieldIsDisappear.call(this, field)) {
+  if (!skip && fieldIsDisappear.call(this, field)) {
     skip = true
   }
 

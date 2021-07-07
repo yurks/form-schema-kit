@@ -10,6 +10,6 @@ module.exports = function (question, rootFields, fields_object, fieldTypes) {
   var field_type = field.field_type !== fieldTypes.hidden && fieldDef && fieldDef.field_type ? fieldDef.field_type : field.field_type
 
   if (fieldDef && !fieldDef.create) {
-    extend(field, fieldDef, { name: field_name, field_type: field_type })
+    rootFields[field_name] = extend(true, {}, field, fieldDef, { name: field_name, field_type: field_type })
   }
 }

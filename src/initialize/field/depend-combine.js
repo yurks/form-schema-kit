@@ -2,6 +2,8 @@
 
 var each = require('wsk-utils/var/object/each')
 var formFieldProcess = require('./process')
+var random = require('wsk-utils/var/string/random')
+var isFunction = require('wsk-utils/var/is/function')
 
 module.exports = function (field, rootFields, rootPages, fieldTypes) {
   // combine depended fields if needed (field.depend_combine: true)
@@ -14,6 +16,32 @@ module.exports = function (field, rootFields, rootPages, fieldTypes) {
     }
     if (!field_primary.depend_combine || !field_primary.options || !field_primary.options.length) {
       return // continue;
+    }
+
+    if (field_primary.depend_combine === true && field_secondary.field_type === fieldTypes.checkbox) {
+      var options = field_secondary.options = []
+      var optionsFilter = field_primary.depend_combine_filter
+      each(field_primary.options, function (a, value_main) {
+        var opts = []
+        each(field_secondary.children[value_main.id], function (b, value_children) {
+          if (isFunction(optionsFilter) && optionsFilter(value_children) === false) {
+            return
+          }
+          value_children.id = value_main.id + ':' +value_children.id
+          opts.push(value_children)
+        })
+        if (opts.length > 0) {
+          options.push({ label: value_main.label, id: 'fsk_' + random() })
+          options.push.apply(options, opts)
+        }
+      })
+      delete field_secondary.children;
+      delete field_secondary.depends_on;
+      formFieldProcess('delete', rootFields, rootPages, field_primary)
+      if (field_secondary.options.length === 0) {
+        formFieldProcess('delete', rootFields, rootPages, field_secondary)
+      }
+      return
     }
 
     var field_fake = {
